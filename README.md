@@ -1,9 +1,7 @@
 # amara
-
-
 Artificially Managed AI Responsive Assistant
 
-Personal project to create a AI virtual assistant. Using python for my backend and react for the front. Utilizing a sql database for ai learning purposes.
+Personal project to create a AI virtual assistant. Using python for my backend and react for the front. Utilizing a sql database for ai learning.
 
 Features
 ----------------------------
