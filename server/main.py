@@ -10,6 +10,7 @@ import openai
 
 # custom function imports
 from functions.openai_requests import convert_audio_to_text
+
 # Intiate App
 app = FastAPI()
 
@@ -41,6 +42,19 @@ async def check_health():
     return {"message": "Healthy"}
 
 
+#get audio recording
+@app.get("/post-audio-get/")
+async def get_audio():
+    
+    #get saved audio rb=read bytes
+    audio_input = open("voice.mp3", "rb")
+
+    #decode audio
+    message_decoded = convert_audio_to_text(audio_input)
+
+    print(message_decoded)
+
+    return "DONE"
 
 # # Post bot response; uploads video 
 # # Note: not playing in browser when using post request
