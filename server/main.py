@@ -9,8 +9,7 @@ from decouple import config
 import openai
 
 # custom function imports
-# ....
-
+from functions.openai_requests import convert_audio_to_text
 # Intiate App
 app = FastAPI()
 
@@ -36,7 +35,17 @@ app.add_middleware(
 )
 
 
-
+# Health Report
 @app.get("/health")
 async def check_health():
     return {"message": "Healthy"}
+
+
+
+# # Post bot response; uploads video 
+# # Note: not playing in browser when using post request
+# @app.post("/post-audio/")
+# async def post_audio(file: UploadFile = File(...)):
+    
+#     print("hello")
+
