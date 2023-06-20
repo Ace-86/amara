@@ -80,7 +80,7 @@ async def get_audio():
     
     #create generator that yeilds chunks of data
     def iterfile():
-        yield audio_input
+        yield audio_output
 
     #return auido file
     return StreamingResponse(iterfile(), media_type="audio/mpeg")    
