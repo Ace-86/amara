@@ -47,11 +47,15 @@ async def reset_convo():
     return {"message": "reset successful"}
 
 #get audio recording
-@app.get("/post-audio-get/")
-async def get_audio():
+@app.post("/post-audio/")
+async def post_audio(file: UploadFile = File(...)):
     
     #get saved audio rb=read bytes
-    audio_input = open("voice.mp3", "rb")
+    # audio_input = open("voice.mp3", "rb")
+
+    with open(file.filename, "wb") as buffer:
+        buffer.write(file.file.read())
+    audio_input = open(file.filename, "rb")
 
     #decode audio
     message_decoded = convert_audio_to_text(audio_input)
@@ -83,7 +87,7 @@ async def get_audio():
         yield audio_output
 
     #return auido file
-    return StreamingResponse(iterfile(), media_type="audio/mpeg")    
+    return StreamingResponse(iterfile(), media_type="application/octet-stream")    
 
     print(message_decoded)
 
