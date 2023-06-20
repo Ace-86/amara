@@ -11,6 +11,8 @@ import openai
 # custom function imports
 from functions.openai_requests import convert_audio_to_text, get_chat_response
 from functions.database import store_messages, reset_messages
+from functions.text_to_speech import convert_text_to_speech
+
 # Intiate App
 app = FastAPI()
 
@@ -24,8 +26,6 @@ origins = [
     "http://localhost:3000",
 ]
 
-
-
 # CORS - Middleware
 app.add_middleware(
     CORSMiddleware,
@@ -34,7 +34,6 @@ app.add_middleware(
     allow_methods= ["*"], 
     allow_headers= ["*"], 
 )
-
 
 # Health Report
 @app.get("/health")
@@ -57,16 +56,35 @@ async def get_audio():
     #decode audio
     message_decoded = convert_audio_to_text(audio_input)
 
-    # gaurd: warning if decode fails
+    # guard: warning if decode fails
     if not message_decoded:
         return HTTPException(status_code=400, detail="Failed to decode audio")
     
     #get response
     chat_response = get_chat_response(message_decoded)
-    print(chat_response)
+    #print(chat_response)
+
+    # guard: warning if chat response is not recieved
+    if not chat_response:
+        return HTTPException(status_code=400, detail="Failed to get chat response")
 
     #store messages
     store_messages(message_decoded, chat_response)
+
+    #convert chat response to audio
+    audio_output = convert_text_to_speech(chat_response)
+
+    # guard: warning audio response from eleven labs fails
+    if not audio_output:
+        return HTTPException(status_code=400, detail="Failed to get eleven labs audio response")
+    
+    #create generator that yeilds chunks of data
+    def iterfile():
+        yield audio_input
+
+    #return auido file
+    return StreamingResponse(iterfile(), media_type="audio/mpeg")    
+
     print(message_decoded)
 
     return "DONE"
