@@ -56,7 +56,7 @@ def store_messages(request_message, response_message):
 
     #add messages to data
     user_message = {"role": "user", "content": request_message}
-    assistant_message = {"role": "assistant", "conent": response_message}
+    assistant_message = {"role": "assistant", "content": response_message}
     messages.append(user_message)
     messages.append(assistant_message)
 
