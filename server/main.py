@@ -10,7 +10,7 @@ import openai
 
 # custom function imports
 from functions.openai_requests import convert_audio_to_text, get_chat_response
-
+from functions.database import store_messages
 # Intiate App
 app = FastAPI()
 
@@ -60,6 +60,8 @@ async def get_audio():
     chat_response = get_chat_response(message_decoded)
     print(chat_response)
 
+    #store messages
+    store_messages(message_decoded, chat_response)
     print(message_decoded)
 
     return "DONE"
