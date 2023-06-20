@@ -9,7 +9,7 @@ from decouple import config
 import openai
 
 # custom function imports
-from functions.openai_requests import convert_audio_to_text
+from functions.openai_requests import convert_audio_to_text, get_chat_response
 
 # Intiate App
 app = FastAPI()
