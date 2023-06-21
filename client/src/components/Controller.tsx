@@ -1,4 +1,5 @@
 import { useState} from 'react';
+import Title from './Title';
 
 function Controller() {
     const [isLoading, setIsLoading] = useState(false);
@@ -10,8 +11,11 @@ function Controller() {
     
   
     return (
-    <div>
-      Controller
+      <div className='h-screen overflow-y-hidden'>
+      <Title setMessages={{setMessages}} />
+      <div className="flex flex-col justify-between h-full overflow-y-scroll pb-96">
+        placeholder
+      </div>
     </div>
   );
 }
