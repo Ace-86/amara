@@ -16,8 +16,9 @@ function Title({ setMessages }: Props) {
       .get("http://localhost:8000/reset")
       .then((res) => {
         if (res.status == 200) {
-            console.log(res.data);
-            setMessages([]);
+          console.log(res.data);
+          //error with setmessages popping up even though function works
+          setMessages([]);
         } else {
           console.error("there was an error with api request to backend");
         }
@@ -32,10 +33,13 @@ function Title({ setMessages }: Props) {
   return (
     <div className="flex justify-between items-center w-full p4 bg-gray-900 text-white font-bold shadow">
       <div className="italic">AMARA</div>
-      <button onClick={resetConversation} 
+      <button
+        onClick={resetConversation}
         className={
-            "transition-all duration-900 text-green-300 hover:text-pink-500 " + 
-        (isResetting && "animate-pulse")}>
+          "transition-all duration-900 text-green-300 hover:text-pink-500 " +
+          (isResetting && "animate-pulse")
+        }
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
