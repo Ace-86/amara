@@ -95,6 +95,19 @@ function Controller() {
               </div>
             );
           })}
+
+        {messages.length == 0 && !isLoading && (
+          <div className="text-center font-light italic mt-10">
+            Amara is waiting....
+          </div>
+        )}
+
+        {isLoading && (
+          <div className="text-center font-light italic mt-10 animate-pulse">
+            Gathering my thoughts...
+          </div>
+        )}
+
         </div>
 
         {/* Recorder */}
