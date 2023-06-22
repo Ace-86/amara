@@ -30,28 +30,29 @@ function Controller() {
         formData.append("file", blob, "myfile.wav");
 
         //send for data to api endpoint
-        await axios.post("http://localhost:8000/post-audio", formData, {
-          headers: { "Content-Type": "audio/mpeg" },
-          responseType: "arraybuffer",
-        })
-        .then((res: any) => {
-          const blob = res.data
-          const audio = new Audio();
-          audio.src = createBlobUrl(blob);
+        await axios
+          .post("http://localhost:8000/post-audio", formData, {
+            headers: { "Content-Type": "audio/mpeg" },
+            responseType: "arraybuffer",
+          })
+          .then((res: any) => {
+            const blob = res.data;
+            const audio = new Audio();
+            audio.src = createBlobUrl(blob);
 
-          //append to audio
-          const amaraMessage = { sender: "amara", blobUrl: audio.src} ;
-          messagesArr.push(amaraMessage)
-          setMessages(messagesArr);
+            //append to audio
+            const amaraMessage = { sender: "amara", blobUrl: audio.src };
+            messagesArr.push(amaraMessage);
+            setMessages(messagesArr);
 
-          //play Audio
-          setIsLoading(false)
-          audio.play();
-        })
-        .catch((err) => {
-          console.error(err.message)
-          setIsLoading(false)
-        })
+            //play Audio
+            setIsLoading(false);
+            audio.play();
+          })
+          .catch((err) => {
+            console.error(err.message);
+            setIsLoading(false);
+          });
       });
   };
 
@@ -60,6 +61,13 @@ function Controller() {
       <Title setMessages={{ setMessages }} />
       <div className="flex flex-col justify-between h-full overflow-y-scroll pb-96">
         <audio src={blob} controls />
+        {/* conversation log */}
+        {/* <div className="mt-5 px-5">
+          {messages.map((audio, index) => {
+            return <div key= {index + audio.sender}></div>;
+          })}
+        </div> */}
+
         {/* Recorder */}
         <div className="fixed bottom-0 w-full py-6 border-t text-center bg-gradient-to-r from-yellow-500 to-pink-500">
           <div className="flex justify-center item-center w-full">
