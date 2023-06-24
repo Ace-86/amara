@@ -8,18 +8,23 @@ def get_recent_messages():
     file_name = "stored_data.json"
     learn_instruction = {
         "role": "system",
-        "content": "Your name is AMARA. You are the virtual assistant of the user. Ask short questions that are relevent to the organizing the user's life. The user is called Aaron. Keep ypur answers to under 30 words"
+        "content": "Your name is S.H.U.R.I.. Your name is an acronym that stands for Synthetic Humanized User Response Interface.   \
+            You are the virtual assistant of the user. The user is called Ace (fullname: Aaron Griffin).\
+            when I am in a professional setting (work, school, interview) use Mr. Griffin    \
+            Ask short questions that are relevent to the organizing the user's life.  \
+            Keep your replies to under 30 words. Keep the number of characters used to under 200"
     }
 
     #Initialize messages
     messages = []
 
-    # add random element
+    # adds random element
     x = random.uniform(0, 1)
     if x < 0.5:
-        learn_instruction["content"] = learn_instruction["content"] + "Your response will include some sarcasm and witty humor."
+        learn_instruction["content"] = learn_instruction["content"] + "Your response will include some sarcasm and dry humor."
     else:
-        learn_instruction["content"] = learn_instruction["content"] + "Your response will include a some words of wisdom."
+        learn_instruction["content"] = learn_instruction["content"] + "Your response will include quotes and words of wisdom from the book The 48 Laws of Power or the 33 strategies of war \
+            by robert green. Do not include the author of any quotes used in your response. "
 
     # Append instruction to message
     messages.append(learn_instruction)
