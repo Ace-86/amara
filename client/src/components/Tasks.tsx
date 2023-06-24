@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import TaskModal from "./TaskModal";
+import Title from "./Title";
 
 type Task = {
   name: string;
@@ -41,6 +42,8 @@ const Tasks: React.FC = () => {
   };
 
   return (
+    <div>
+    <Title setMessages={undefined} />
     <div className="container mx-auto">
       <h1 className="text-2xl font-bold mb-4">Tasks</h1>
       <div className="mb-4">
@@ -93,6 +96,7 @@ const Tasks: React.FC = () => {
           closeModal={closeModal}
         />
       )}
+    </div>
     </div>
   );
 };
