@@ -1,6 +1,10 @@
 # amara
 Artificially Managed AI Responsive Assistant
 
+name change to S.H.U.R.I : Synthetic Helper with User-centric Response Intelligence// example: Siri is Speech Interpretation and Recognition Interface
+SHURI: Self-Learning Hybrid User-Centric Response Interface
+SHURI: Synthetic Humanized User Response Intellegence
+
 Personal project to create a AI virtual assistant. Using python for my backend and react for the front. Utilizing a sql database for ai learning.
 
 Features
