@@ -1,6 +1,13 @@
 import json
 import random
 
+
+
+from functions.command import COMMANDS
+
+
+
+
 #get recent messages
 def get_recent_messages():
 
@@ -74,3 +81,20 @@ def reset_messages():
 
     #overwrite current file with empty data
     open("stored_data.json", "w")
+
+
+
+
+
+
+
+#handle commands
+def handle_command(command):
+    if command in COMMANDS:
+        response = COMMANDS[command]
+    else:
+        response = "I cannot complete the command"
+    
+    store_messages(command, response)
+
+    return response
