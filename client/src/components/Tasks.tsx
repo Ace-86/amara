@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import TaskModal from "./TaskModal";
 import Title from "./Title";
+import {Link} from "react-router-dom"
+
 
 type Task = {
   name: string;
@@ -44,6 +46,12 @@ const Tasks: React.FC = () => {
   return (
     <div>
     <Title setMessages={undefined} />
+    {/* link to task page */}
+    < Link to="/tasks" className="ml-2">
+      Link
+    </Link>
+    {/* cut off --------- */}
+
     <div className="container mx-auto">
       <h1 className="text-2xl font-bold mb-4">Tasks</h1>
       <div className="mb-4">
