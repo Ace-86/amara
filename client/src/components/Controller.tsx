@@ -1,13 +1,40 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Title from "./Title";
 import RecordMessage from "./RecordMessage";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate  } from "react-router-dom";
 
 function Controller() {
   const [isLoading, setIsLoading] = useState(false);
   const [messages, setMessages] = useState<any[]>([]);
   const [blob, setBlob] = useState("");
+  const history = useNavigate();
+
+
+
+
+
+
+  // Fetch initial messages from the backend
+// useEffect(() => {
+//   fetchMessages();
+// }, []);
+
+// const fetchMessages = async () => {
+//   try {
+//     const response = await axios.get("http://localhost:8000/messages");
+//     setMessages(response.data);
+//   } catch (error) {
+//     console.error("Error fetching messages:", error);
+//   }
+// };
+// cut off----------------
+
+
+
+
+
+
 
   const createBlobUrl = (data: any) => {
     const blob = new Blob([data], { type: "audio/mpeg" });
@@ -49,6 +76,14 @@ function Controller() {
             //play Audio
             setIsLoading(false);
             audio.play();
+
+            // Analyze the AI response for specific commands
+            // const userCommand = res.data
+            // const aiResponse = get_chat_response(userCommand); // Replace "" with the actual user input
+            // handleCommand(aiResponse);
+
+
+
           })
           .catch((err) => {
             console.error(err.message);
@@ -56,6 +91,27 @@ function Controller() {
           });
       });
   };
+
+
+
+
+
+  // Handle specific commands
+  // const handleCommand = (command: string) => {
+  //   if (command === "open task page") {
+  //     history("/tasks");
+  //     console.log("Opening task page...");
+  //   } else if (command === "create new task") {
+  //     // placeholder for create new task
+  //     console.log("Creating new task...");
+  //   }
+  // }
+
+
+
+
+
+
 
   return (
     <div className="h-screen overflow-y-hidden">
