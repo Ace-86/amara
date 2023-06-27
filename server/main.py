@@ -1,4 +1,7 @@
+# production mode
 # uvicorn main:app
+
+#dev mode
 # uvicorn main:app --reload
 
 #main imports
@@ -67,6 +70,11 @@ async def post_audio(file: UploadFile = File(...)):
     #get response
     chat_response = get_chat_response(message_decoded)
     #print(chat_response)
+
+    
+    #decypher commands and execute commands
+
+
 
     # guard: warning if chat response is not recieved
     if not chat_response:
