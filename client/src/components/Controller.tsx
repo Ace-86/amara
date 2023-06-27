@@ -7,7 +7,7 @@ import { Link, useNavigate  } from "react-router-dom";
 function Controller() {
   const [isLoading, setIsLoading] = useState(false);
   const [messages, setMessages] = useState<any[]>([]);
-  const [blob, setBlob] = useState("");
+  // const [blob, setBlob] = useState("");
   const history = useNavigate();
 
 
