@@ -38,6 +38,20 @@ def get_chat_response(message_input):
         )
         print(response)
         message_text = response["choices"][0]["message"]["content"]
+        
+        
+        # Analyze the response for specific keywords and trigger events
+        # if "open task page" in message_text:
+            # Trigger event to open the task page in your frontend
+            # You can use a WebSocket or an API call to communicate with your frontend
+
+        # if "create new task" in message_text:
+            # Trigger event to create a new task in your frontend
+            # You can use a WebSocket or an API call to communicate with your frontend
+
+        # Other keyword checks and corresponding events...
+        
+        
         return message_text
     except Exception as e:
         print(e)
