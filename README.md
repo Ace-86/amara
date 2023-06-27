@@ -9,8 +9,7 @@ Personal project to create a AI virtual assistant. Using python for my backend a
 
 Features
 ----------------------------
-Goals
-10000 hr tracking
+Goals -10000 hr tracking
 Update calendar events
 Update notes
 Update Contacts
@@ -24,17 +23,19 @@ alarm
 
 Technologies Used:
 Javascript, React, Node, Python, MySQL, Figma, Express, Nodemon, 
-Fastapi, chatgpt, 
+
+API(s) used:
+Fastapi, Chatgpt, ElevenLabs
 
 
 Phase 1 (6/13/23):
-Create a frontend chat display to show communication between user and ai
-Develop a voice recorder feature (main communication path)
-Create two-way voice communication between user and ai
-Storage of all communication data saved on private server to create a ai learning database
-Allow user to see/listen to the last five conversations
-Allow user to delete history (warn user 2x)
-
+xx-Create a frontend chat display to show communication between user and ai;
+xx-Develop a voice recorder feature (main communication path);
+xx-Create two-way voice communication between user and ai;
+Storage of all communication data saved on private server to create a ai learning database;
+Allow user to see/listen to the last five conversations;
+Allow user to delete history (warn user 2x);
+AI can perform simple task (opening a page, creating a new task) using commands;
 
 
 Phase 2:
