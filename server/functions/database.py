@@ -11,27 +11,26 @@ from functions.command import COMMANDS
 #get recent messages
 def get_recent_messages():
 
-    #define the file name and leaning ai instructional prompts
+    #define the file name and learning ai instructional prompts
     file_name = "stored_data.json"
     learn_instruction = {
         "role": "system",
         "content": "Your name is S.H.U.R.I.. Your name is an acronym that stands for Synthetic Humanized User Response Interface.   \
-            You are the virtual assistant of the user. The user is called Ace (fullname: Aaron Griffin).\
-            when I am in a professional setting (work, school, interview) use Mr. Griffin    \
-            Ask short questions that are relevent to the organizing the user's life.  \
-            Keep your replies to under 30 words. Keep the number of characters used to under 200"
+            You are the virtual assistant of the user. The user is called Aaron.    \
+            If the user says 'open task page' you should reply 'opening task' (and say nothing else)   \
+            Keep your replies to under 40 words. Keep the number of characters used to under 200"
     }
 
     #Initialize messages
     messages = []
 
     # adds random element
-    x = random.uniform(0, 1)
-    if x < 0.5:
-        learn_instruction["content"] = learn_instruction["content"] + "Your response will include some sarcasm and dry humor."
-    else:
-        learn_instruction["content"] = learn_instruction["content"] + "Your response will include quotes and words of wisdom from the book The 48 Laws of Power or the 33 strategies of war \
-            by robert green. Do not include the author of any quotes used in your response. "
+    # x = random.uniform(0, 1)
+    # if x < 0.1:
+    #     learn_instruction["content"] = learn_instruction["content"] + "Your response will include some sarcasm and dry humor."
+    # else:
+    #     learn_instruction["content"] = learn_instruction["content"] + "Your response will include quotes and words of wisdom from the book The 48 Laws of Power or the 33 strategies of war \
+    #         by robert green. Do not include the author of any quotes used in your response. "
 
     # Append instruction to message
     messages.append(learn_instruction)
@@ -83,18 +82,13 @@ def reset_messages():
     open("stored_data.json", "w")
 
 
-
-
-
-
-
 #handle commands
-def handle_command(command):
-    if command in COMMANDS:
-        response = COMMANDS[command]
-    else:
-        response = "I cannot complete the command"
+# def handle_command(command):
+#     if command in COMMANDS:
+#         response = COMMANDS[command]
+#     else:
+#         response = "I cannot complete the command"
     
-    store_messages(command, response)
+#     store_messages(command, response)
 
-    return response
+#     return response

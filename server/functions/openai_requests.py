@@ -41,8 +41,8 @@ def get_chat_response(message_input):
         
         
         # Analyze the response for specific keywords and trigger events
-        # if "open task page" in message_text:
-            # Trigger event to open the task page in your frontend
+        if "opening task" in response["content"]:
+            print("Success!!!")
             # You can use a WebSocket or an API call to communicate with your frontend
 
         # if "create new task" in message_text:
